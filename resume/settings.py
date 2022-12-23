@@ -82,12 +82,8 @@ WSGI_APPLICATION = 'resume.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sggbcmck',
-        'USER':'sggbcmck',
-        'PASSWORD':'IUcZ2F1r2D92lT2QcaEg4pXaBXrXO7-X',
-        'HOST':'lallah.db.elephantsql.com',
-        'PORT':'5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
