@@ -28,8 +28,7 @@ DEBUG = True
 
 SESSION_SAVE_EVERY_REQUEST=True
 
-
-ALLOWED_HOSTS = ['salty-bastion-77833.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost']
 
 
 # Application definition
@@ -131,11 +130,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-# STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 print("Static file dir:", STATICFILES_DIRS[0])
 
 # STATICFILES_DIRS=[
