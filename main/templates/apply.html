@@ -1,0 +1,66 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<style>
+    .apply{
+        width:50%;
+    }
+</style>
+
+<div class="container apply mt-5">
+    <p style="color: red; display: none; font-size: 12.5px;" id='error'>*Fill all fields</p>
+    <p style="display: none; font-size: 13.5px;" id='process'>*Processing</p>
+    <form id='one'>
+        <div class="form-group">
+            <b><label for="comment" style="font-size: 13.5px;">Puropse for Applying</label></b>
+            <textarea class="form-control" rows="5" id="comment" placeholder="Write Here" name='body'></textarea>
+        </div>
+        <b><label style="font-size: 13.5px;" for="inputGroupFile01">Upload Resume (Pdf Format)</label></b>
+        <p style="color: red; display: none; font-size: 12.5px;" id='err'>*Upload pdf document</p>
+        <div class="form-group mb-3">
+            <input type="file" id="inputGroupFile01" name='file'>
+        </div>
+        <button class="btn btn-secondary py-1 px-4 mt-2" style="color: rgba(2,3,4,0.8); background-color: rgba(42,43,45,0.1); border: none;">Apply</button>
+    </form>
+    
+</div>
+<script>
+    const form=document.getElementById('one');
+    const formData = new FormData();
+    one.addEventListener('submit',(e) => {
+        e.preventDefault();
+        document.querySelector('#error').style.display='none'
+        document.querySelector('#err').style.display='none'
+        if(document.querySelector('#inputGroupFile01').value.length==0 || document.querySelector('#comment').value.length==0){
+            document.querySelector('#error').style.display='block'
+        }
+        else{
+            const ext=document.querySelector('#inputGroupFile01').value.split('.');
+            if(ext[ext.length-1]=='pdf'){
+                document.querySelector('#process').style.display='block'
+                const imagefile = document.querySelector('#inputGroupFile01');
+                formData.append("file", imagefile.files[0]);
+                formData.append("file1", imagefile.files[0]);
+                formData.append("content", document.querySelector('#comment').value);
+                axios.post('/apply/{{ id }}', formData, {
+                    headers: {
+                    'Content-Type': 'multipart/form-data'
+                    }
+                }).then(res => window.location='/')
+            }
+            else{
+                document.querySelector('#err').style.display='block'
+            }
+        }
+    })
+</script>

@@ -1,0 +1,53 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<div class="card container mt-3" style="font-size: 17.5px; border: 1.75px solid rgba(30,32,33,0.4);">
+    <br />
+    <div class="card-body">
+        <div style="font-family: Georgia, 'Times New Roman', Times, serif;">
+            {% if internship.category == "web" %}
+                <h1 class="card-title" style="text-align: center;">Web Development Internship with {{ internship.user.username }}</h1>
+            {% endif %}
+            {% if internship.category == "app" %}
+                <h1 class="card-title" style="text-align: center;">Android Development Internship with {{ internship.user.username }}</h1>
+            {% endif %}
+            {% if internship.category == "data" %}
+                <h1 class="card-title" style="text-align: center;">Data Science Internship with {{ internship.user.username }}</h1>
+            {% endif %}
+        </div>
+        <br />
+        <b><label class="card-text" for="desc">Descripton</label></b>
+        <p class="card-text" id='desc'>{{ internship.desc }}</p>
+        <hr />
+        <b><label class="card-text" for="man">Manadatory Requirements</label></b>
+        <ul id='man'>
+            {% for i in man %}
+                <li>{{ i.skill }}</li>
+            {% endfor %}
+        </ul>
+        <hr />
+        <b><label class="card-text" for="opt">Optional Requirements</label></b>
+        <ul id='opt'>
+            {% for i in opt %}
+                <li>{{ i.skill }}</li>
+            {% endfor %}
+        </ul>
+        <hr />
+        <b><label class="card-text" for="last">Duration</label></b>
+        <br />
+        <span>{{ internship.duration }} months</span>
+        <hr />
+        <b><label class="card-text" for="last">Last Date for Applying</label></b>
+        <br />
+        <span>{{ internship.last }}</span>
+        <br />
+        <br />
+        <br />
+        <a href="/apply/{{ internship.id }}" class="card-link btn btn-success">Apply Now >></a>
+    </div>
+</div>
+<br />
+<br />
