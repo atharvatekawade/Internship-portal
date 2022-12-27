@@ -35,13 +35,6 @@ six==1.16.0
 spacy==3.0.6
 sqlparse==0.3.1
 srsly==1.0.2
-tensorboard==2.11.0
-tensorboard-data-server==0.6.1
-tensorboard-plugin-wit==1.8.1
-thinc==7.4.1
-torch==1.13.0+cu117
-torchaudio==0.13.0+cu117
-torchvision==0.14.0+cu117
 tqdm==4.48.2
 typing==3.7.4.3
 typing-extensions==4.4.0
